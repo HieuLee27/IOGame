@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TrunkController : EnemyController
+{
+    [SerializeField] private GameObject bullet;
+
+    [SerializeField] private float distanceKeeping;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    public override void CatchPlayer()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping)
+        {
+            rb.velocity = Vector2.zero;
+            anim.SetBool("ATK", true);
+            anim.SetBool("Run", false);
+        }
+        else
+        {
+            base.CatchPlayer();
+            anim.SetBool("ATK", false);
+            anim.SetBool("Run", true);
+        }
+    }
+
+    public void SpawnBullet()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping)
+        {
+            float cornerRotate = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
+            Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, cornerRotate));
+        }
+    }
+}
