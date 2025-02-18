@@ -56,7 +56,7 @@ public class ManagerGame : MonoBehaviour
         source.PlayOneShot(backgroundAudio);
     }
 
-    public enum Results
+    public enum Results //Trạng thái kết quả
     {
         Win,
         Lose,
@@ -77,7 +77,7 @@ public class ManagerGame : MonoBehaviour
         StartCoroutine(EndGame());
     }
 
-    private void Selection()
+    private void Selection() //Hiển thị panel skill khi đạt level
     {
         if (levelBar.value == 1 && !isPaused)
         {
@@ -87,12 +87,12 @@ public class ManagerGame : MonoBehaviour
         }
     }
 
-    public void TogglePause()
+    public void TogglePause() //Tạm dừng game
     {
         isPaused = false;
     }
 
-    private void CreateEnablePos()
+    private void CreateEnablePos() //Tạo vị trí cho enemy
     {
         foreach (Vector2 pos in blankPos)
         {
@@ -103,7 +103,7 @@ public class ManagerGame : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy() //Tạo enemy
     {
         CreateEnablePos();
         if (enemyInScene.Count < maxEnemyInScene && !modeBoss)
@@ -118,12 +118,12 @@ public class ManagerGame : MonoBehaviour
         enabledPos.Clear();
     }
 
-    IEnumerator WaitScript()
+    IEnumerator WaitScript() //Chờ script chạy xong
     {
         yield return new WaitForSeconds(1);
     }
 
-    IEnumerator DisplayAttention()
+    IEnumerator DisplayAttention() //Hiển thị cảnh báo
     {
         warningPanel.SetActive(true);
         source.PlayOneShot(warningAudio);
@@ -131,7 +131,7 @@ public class ManagerGame : MonoBehaviour
         warningPanel.SetActive(false);
     }
 
-    private void ClearEnemy()
+    private void ClearEnemy() //Xóa enemy
     {
         foreach (var ene in enemyInScene)
         {
@@ -142,7 +142,7 @@ public class ManagerGame : MonoBehaviour
         }
     }
 
-    IEnumerator Warning()
+    IEnumerator Warning() //Hiển thị cảnh báo boss
     {
         if ((int)Time.timeSinceLevelLoad == timeToSpawnBoss)
         {
@@ -160,14 +160,14 @@ public class ManagerGame : MonoBehaviour
         }
     }
 
-    private void SpawnBoss()
+    private void SpawnBoss() //Tạo boss
     {
         bossInstance = Instantiate(boss, player.transform.position + new Vector3(0, 3.5f, 0), Quaternion.identity);
         bloodOfBoss.gameObject.SetActive(true);
     }
 
 
-    public void EnableBoss()
+    public void EnableBoss() //Hiển thị boss
     {
         if (bossInstance != null)
         {
@@ -186,14 +186,14 @@ public class ManagerGame : MonoBehaviour
         }
     }
 
-    IEnumerator EndGame()
+    IEnumerator EndGame() //Kết thúc game
     {
         if (result != Results.None)
         {
             yield return new WaitForSeconds(2);
             panelResult.SetActive(true);
-            textResult.text = result == Results.Win ? "WIN" : "LOSE";
-            if(result == Results.Win)
+            textResult.text = result == Results.Win ? "WIN" : "LOSE"; //Hiển thị kết quả
+            if (result == Results.Win)
             {
                 source.PlayOneShot(winAudio);
             }
@@ -205,7 +205,7 @@ public class ManagerGame : MonoBehaviour
         }
     }
 
-    public void Home()
+    public void Home() //Quay về menu
     {
         SceneManager.LoadScene(0);
     }

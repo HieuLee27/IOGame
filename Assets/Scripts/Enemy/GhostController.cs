@@ -43,7 +43,7 @@ public class GhostController : EnemyController
         instance = this;
     }
 
-    public override void CatchPlayer()
+    public override void CatchPlayer() // Đuổi theo player
     {
         if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping)
         {
@@ -55,7 +55,7 @@ public class GhostController : EnemyController
         }
     }
 
-    private void SpawnBullet()
+    private void SpawnBullet() // Bắn đạn
     {
         if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping + 2f)
         {
@@ -64,7 +64,7 @@ public class GhostController : EnemyController
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // Xử lý va chạm với cây, gỗ
     {
         if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Wood"))
         {
@@ -72,7 +72,7 @@ public class GhostController : EnemyController
         }
     }
 
-    private void AnimDisappear()
+    private void AnimDisappear() // Xử lý hiệu ứng biến mất
     {
         if (Time.time > timeAppear + timeExist && count < 2)
         {
@@ -80,7 +80,7 @@ public class GhostController : EnemyController
         }
     }
 
-    private void Disappear()
+    private void Disappear() // Xử lý biến mất
     {
         if (count < 2 && Time.time > timeAppear + timeExist && isAppear)
         {
@@ -94,7 +94,7 @@ public class GhostController : EnemyController
         }
     }
 
-    private void SpawnBullets(int bulletPattern)
+    private void SpawnBullets(int bulletPattern) // Bắn đạn theo mẫu
     {
         int bulletCount = 8; // Số lượng viên đạn mặc định
         float angleStep = 360f / bulletCount;
@@ -134,7 +134,7 @@ public class GhostController : EnemyController
         }
     }
 
-    public void Attacking()
+    public void Attacking() // Xử lý tấn công
     {
         if (count == 0)
         {
@@ -155,7 +155,7 @@ public class GhostController : EnemyController
         }
     }
 
-    public override void DestroyEnemyAndSpawnMana()
+    public override void DestroyEnemyAndSpawnMana() // Xử lý khi enemy bị hủy
     {
         if (health <= 0.05f)
         {

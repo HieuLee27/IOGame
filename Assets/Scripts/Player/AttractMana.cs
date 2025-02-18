@@ -17,7 +17,7 @@ public class AttracMana : MonoBehaviour
         Attractive();
     }
 
-    private void Attractive()
+    private void Attractive() //Hàm thu hút mana
     {
         listMana = GameObject.FindGameObjectsWithTag(manaFood.tag).ToList();
         listCoin = GameObject.FindGameObjectsWithTag("Coin").ToList();

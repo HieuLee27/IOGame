@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemyRoutine());
     }
 
-    IEnumerator SpawnEnemyRoutine()
+    IEnumerator SpawnEnemyRoutine() //Hàm spawn enemy
     {
         while (true)
         {
@@ -25,13 +25,13 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy() //Hàm tạo vị trí spawn enemy
     {
         Vector3 spawnPosition = GetSpawnPosition();
         Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
 
-    Vector3 GetSpawnPosition()
+    Vector3 GetSpawnPosition() //Hàm lấy vị trí spawn enemy
     {
         Camera cam = Camera.main;
         Vector3 camPos = cam.transform.position;

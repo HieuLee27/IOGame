@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,7 +17,7 @@ public class AddSkill : ButtonSkill
         player = GameObject.FindWithTag("Player");
     }
 
-    public void Healing()
+    public void Healing() //Kỹ năng hồi máu
     {
         GameObject currentBlood = player.transform.Find("Blood_Front").gameObject;
         if (currentBlood.transform.localScale.x < player.GetComponent<DecreaseBlood>().maxBlood)
@@ -33,7 +33,7 @@ public class AddSkill : ButtonSkill
         player.GetComponent<ControllerPlayer>().health += 100;
     }
 
-    public void Thunder()
+    public void Thunder() //Kỹ năng tạo sét
     {
         skillPrefab.SetActive(true);
         if (skillPrefab.GetComponent<Thunder>().timeToSpawn > 1.5f)
@@ -43,7 +43,7 @@ public class AddSkill : ButtonSkill
         }
     }
 
-    public void LevelUpDart()
+    public void LevelUpDart() //Kỹ năng tăng cấp độ phi tiêu
     {
         if (player.GetComponent<Attack>().levelOfDart < 3.0f)
         {

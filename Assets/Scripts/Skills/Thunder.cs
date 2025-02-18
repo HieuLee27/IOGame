@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ public class Thunder : MonoBehaviour
         SpawnThunder();
     }
 
-    private void SpawnThunder()
+    private void SpawnThunder() //Hàm tạo tia sét
     {
         if (countOfThunder.Length < maxCountOfThunder)
         {

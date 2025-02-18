@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         target = GameObject.FindWithTag(enemy.tag);
     }
 
-    public virtual void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision) //Xóa đạn khi chạm vào cây, gạch, đá, hoặc đạn của địch
     {
         if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Wood") || collision.gameObject.CompareTag("Bounder")
             || collision.gameObject.CompareTag(enemy.tag))

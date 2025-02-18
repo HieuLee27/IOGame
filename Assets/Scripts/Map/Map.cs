@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -38,7 +38,7 @@ public class Map : MonoBehaviour
         mapInstance = this;
     }
 
-    private void PaintWall()
+    private void PaintWall() // Vẽ tường
     {
         for(int i = -maxX / 2; i < maxX; i++)
         {
@@ -66,7 +66,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    private void PainTree()
+    private void PainTree() // Vẽ cây
     {
         for (int x = -Math.Abs(maxX / 2 - 1); x < maxX / 2; x++)
         {
@@ -98,7 +98,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    public void PainMap()
+    public void PainMap() // Vẽ map
     {
         GameObject[] listTree = GameObject.FindGameObjectsWithTag("Tree");
         GameObject[] listWood = GameObject.FindGameObjectsWithTag("Wood");
@@ -115,7 +115,7 @@ public class Map : MonoBehaviour
         PainTree();
     }
 
-    private void PainFloor()
+    private void PainFloor() // Vẽ sàn
     {
         DestroyImmediate(GameObject.FindWithTag("Floor"));
         square.transform.localScale = new Vector2(maxX + 5, maxY + 10);
@@ -123,7 +123,7 @@ public class Map : MonoBehaviour
             transform.rotation);
     }
 
-    private void ClearMap()
+    private void ClearMap() // Xóa map
     {
         PainFloor();
         firstFloor.ClearAllTiles();

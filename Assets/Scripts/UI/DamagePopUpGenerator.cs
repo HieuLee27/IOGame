@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,7 +13,7 @@ public class DamagePopUpGenerator : MonoBehaviour
         current = this;
     }
 
-    public void CreatePopUp(Vector3 position, string text, Color color)
+    public void CreatePopUp(Vector3 position, string text, Color color) //Tạo pop up hiển thị damage
     {
         var popup = Instantiate(prefabs, position, Quaternion.identity);
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class TurtleController : EnemyController
         DeleteDamage();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision) // Tấn công khi va chạm với player
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -25,7 +25,7 @@ public class TurtleController : EnemyController
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision) // Ngừng tấn công khi không va chạm với player
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -33,12 +33,12 @@ public class TurtleController : EnemyController
         }
     }
 
-    private void DeleteDamage()
+    private void DeleteDamage() // Xóa sát thương
     {
         damage = 0;
     }
 
-    public void MakeDamage()
+    public void MakeDamage() // Tạo sát thương
     {
         damage = defaultDamage;
     }

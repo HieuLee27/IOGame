@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +23,7 @@ public class DecreaseBlood : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void Decrease()
+    public void Decrease() //Hàm giảm máu
     {
         space = blood.transform.localScale.x * (percen / 100);
         currentBlood.x -= space;
@@ -34,7 +34,7 @@ public class DecreaseBlood : MonoBehaviour
         player.GetComponent<ControllerPlayer>().health -= hpDecrease;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //Xử lý va chạm với đạn hoặc enemy
     {
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {

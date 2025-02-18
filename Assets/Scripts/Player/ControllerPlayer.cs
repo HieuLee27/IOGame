@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -45,7 +45,7 @@ public class ControllerPlayer : MonoBehaviour
         ResetValue();
     }
 
-    private void Move()
+    private void Move() //Hàm di chuyển player
     {
         if (joystickScript.Direction.x != 0 || joystickScript.Direction.y != 0)
         {
@@ -57,7 +57,7 @@ public class ControllerPlayer : MonoBehaviour
         }
     }
 
-    private void AnimationPlayer()
+    private void AnimationPlayer()  //Hàm chuyển động của player
     {
 
         if (Math.Abs(joystickScript.Direction.x) > Math.Abs(joystickScript.Direction.y))
@@ -75,7 +75,7 @@ public class ControllerPlayer : MonoBehaviour
         anim.SetInteger("Move", parameter);
     }
 
-    private void FlipSprite()
+    private void FlipSprite() //Hàm lật hình của player
     {
         if (parameter == 0)
         {
@@ -96,12 +96,12 @@ public class ControllerPlayer : MonoBehaviour
         }
     }
 
-    private void Appear()
+    private void Appear() //Hàm xuất hiện của player
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //Xử lý va chạm với mana và coin
     {
         if (collision.gameObject.CompareTag("Mana"))
         {
@@ -115,7 +115,7 @@ public class ControllerPlayer : MonoBehaviour
         }
     }
 
-    private void ResetValue()
+    private void ResetValue() //Hàm reset giá trị của slider
     {
         if (sliderMana.value == 1)
         {
@@ -123,7 +123,7 @@ public class ControllerPlayer : MonoBehaviour
         }
     }
 
-    public void CheckLife()
+    public void CheckLife() //Hàm kiểm tra mạng của player
     {
         ManagerGame.instance.result = ManagerGame.Results.Lose;
     }

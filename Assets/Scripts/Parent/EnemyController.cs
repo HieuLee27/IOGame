@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -36,13 +36,13 @@ public class EnemyController : MonoBehaviour
         CatchPlayer();
     }
 
-    public virtual void Appear()
+    public virtual void Appear() //Cách thức xuất hiện của enemy
     {
         transform.position = new Vector3(transform.position.x, 
             transform.position.y, transform.position.y);
     }
 
-    private void FlipSprite()
+    private void FlipSprite() //Lật hình của enemy
     {
         if (direction.x > 0)
         {
@@ -54,12 +54,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public virtual void CatchPlayer()
+    public virtual void CatchPlayer() //Đuổi theo player
     {
         rb.velocity = direction.normalized * speedMoving;
     }
 
-    public virtual void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision) //Xử lý va chạm với đạn
     {
         if (collision.gameObject.CompareTag("Dart"))
         {
@@ -82,7 +82,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public virtual void DestroyEnemyAndSpawnMana()
+    public virtual void DestroyEnemyAndSpawnMana() //Xử lý khi enemy bị hết máu
     {
         if(health <= 0.05f)
         {

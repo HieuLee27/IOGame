@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
         InvokeRepeating(nameof(Shoting), 0.5f, timeShot);
     }
 
-    private void Shoting()
+    private void Shoting() //Hàm bắn đạn
     {
         listEnemy = GameObject.FindGameObjectsWithTag(enemy.tag);
         if(listEnemy.Length != 0 && canAttack)

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class TrunkController : EnemyController
         base.Update();
     }
 
-    public override void CatchPlayer()
+    public override void CatchPlayer() // Đuổi theo player
     {
         if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping)
         {
@@ -34,7 +34,7 @@ public class TrunkController : EnemyController
         }
     }
 
-    public void SpawnBullet()
+    public void SpawnBullet() // Bắn đạn
     {
         if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping)
         {

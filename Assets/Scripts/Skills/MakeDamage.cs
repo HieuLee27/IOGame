@@ -6,7 +6,7 @@ public class MakeDamage : MonoBehaviour
 {
     public float damage;
 
-    public void DestroyThunder()
+    public void DestroyThunder() //Hàm xóa tia sét
     {
         Destroy(gameObject);
     }
