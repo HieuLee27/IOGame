@@ -36,9 +36,10 @@ public class EnemyController : MonoBehaviour
         CatchPlayer();
     }
 
-    private void Appear()
+    public virtual void Appear()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        transform.position = new Vector3(transform.position.x, 
+            transform.position.y, transform.position.y);
     }
 
     private void FlipSprite()
@@ -65,14 +66,18 @@ public class EnemyController : MonoBehaviour
             anim.SetTrigger("Hit");
             rb.velocity = direction.normalized * -2f;
             health -= collision.GetComponent<Darts>().damage;
-            DamagePopUpGenerator.current.CreatePopUp(transform.position, collision.GetComponent<Darts>().damage.ToString(), Color.yellow);
+            DamagePopUpGenerator.current.CreatePopUp(transform.position, 
+                collision.GetComponent<Darts>().damage.ToString(), 
+                Color.yellow);
             rb.AddForce(-direction.normalized);
         }
         if (collision.gameObject.CompareTag("Thunder"))
         {
             anim.SetTrigger("Hit");
             health -= collision.GetComponent<MakeDamage>().damage;
-            DamagePopUpGenerator.current.CreatePopUp(transform.position, collision.GetComponent<MakeDamage>().damage.ToString(), Color.red);
+            DamagePopUpGenerator.current.CreatePopUp(transform.position, 
+                collision.GetComponent<MakeDamage>().damage.ToString(), 
+                Color.red);
             rb.velocity = Vector2.zero;
         }
     }
@@ -82,15 +87,17 @@ public class EnemyController : MonoBehaviour
         if(health <= 0.05f)
         {
             Destroy(gameObject);
-            int number1 = Random.Range(0, 3);
+            int number1 = Random.Range(2, 7);
             for(int i = 0; i < number1; i++)
             {
-                Instantiate(mana, transform.position, Quaternion.identity);
+                Instantiate(mana, transform.position, 
+                    Quaternion.identity);
             }
-            int number2 = Random.Range(0, 5);
+            int number2 = Random.Range(1, 2);
             for (int i = 0; i < number2; i++)
             {
-                Instantiate(coin, transform.position, Quaternion.identity);
+                Instantiate(coin, transform.position, 
+                    Quaternion.identity);
             }
         }
     }

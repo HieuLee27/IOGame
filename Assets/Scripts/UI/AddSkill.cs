@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -31,14 +30,16 @@ public class AddSkill : ButtonSkill
             currentBlood.transform.localScale += new Vector3(space, 0, 0);
             currentBlood.transform.localPosition += new Vector3(space / 4, 0, 0);
         }
+        player.GetComponent<ControllerPlayer>().health += 100;
     }
 
     public void Thunder()
     {
         skillPrefab.SetActive(true);
-        if (skillPrefab.GetComponent<Thunder>().timeToSpawn > 0.5f)
+        if (skillPrefab.GetComponent<Thunder>().timeToSpawn > 1.5f)
         {
-            skillPrefab.GetComponent<Thunder>().timeToSpawn -= 0.2f;
+            skillPrefab.GetComponent<Thunder>().timeToSpawn -= 0.5f;
+            player.transform.Find("ThunderSkill").GetComponent<Thunder>().maxCountOfThunder += 1;
         }
     }
 
@@ -47,6 +48,7 @@ public class AddSkill : ButtonSkill
         if (player.GetComponent<Attack>().levelOfDart < 3.0f)
         {
             player.GetComponent<Attack>().levelOfDart += 0.4f;
+
         }
     }
 }

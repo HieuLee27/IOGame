@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5374107843718064953}
   - component: {fileID: 1715157691485768543}
   - component: {fileID: 6660868291542339890}
+  - component: {fileID: 4363295883993058958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,7 +108,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -182,7 +183,8 @@ MonoBehaviour:
   joystickScript: {fileID: 0}
   speed: 1.5
   sliderMana: {fileID: 0}
-  health: 850
+  amountOfCoin_text: {fileID: 0}
+  health: 500
 --- !u!95 &7374258592270537043
 Animator:
   serializedVersion: 5
@@ -221,10 +223,12 @@ MonoBehaviour:
   - {fileID: 5955375302497538750, guid: 5ced081366daf8e49b7d383ca5f401b7, type: 3}
   - {fileID: 8802830643037561756, guid: 95c73046ccd757e4396f7eae32542df0, type: 3}
   - {fileID: 4253334500001929014, guid: 976d5cf15a43fd84e8e8cb0538003e3d, type: 3}
-  timeShot: 1.3
+  timeShot: 1.5
   visibility: 3
   enemy: {fileID: 1257906178024666895, guid: 1b06de6238c559747afd269ec440d243, type: 3}
   force: 4
+  source: {fileID: 0}
+  shotAudio: {fileID: 8300000, guid: 2d796f337d1f94c489f4cce87c00b768, type: 3}
 --- !u!114 &1715157691485768543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +257,14 @@ MonoBehaviour:
   manaFood: {fileID: 4129319525363264706, guid: 344c90687aa72aa4d94943434f012af3,
     type: 3}
   attractiveDistance: 0.8
+--- !u!81 &4363295883993058958
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784232255670967717}
+  m_Enabled: 1
 --- !u!1 &1464264869382250453
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +397,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.394
-  m_Color: {r: 0.6320754, g: 0.7157279, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.92
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -428,7 +440,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4737335462635837548}
-  - component: {fileID: 4511993937333840262}
   - component: {fileID: 2728913696616736291}
   m_Layer: 0
   m_Name: ThunderSkill
@@ -452,41 +463,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2941142584021721629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4511993937333840262
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6486190322923788070}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 4.5787797
 --- !u!114 &2728913696616736291
 MonoBehaviour:
   m_ObjectHideFlags: 0

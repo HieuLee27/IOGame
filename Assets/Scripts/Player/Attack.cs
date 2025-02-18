@@ -5,11 +5,16 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] private GameObject[] dart;
+    public List<GameObject> dart;
     [SerializeField] private float timeShot;
     [SerializeField] private float visibility;
     [SerializeField] GameObject enemy;
     [SerializeField] private float force;
+
+    internal bool canAttack;
+
+    public AudioSource source;
+    public AudioClip shotAudio;
 
     internal float levelOfDart;
 
@@ -22,6 +27,7 @@ public class Attack : MonoBehaviour
     {
         targetPos = Vector3.zero;
         levelOfDart = 0;
+        canAttack = true;
     }
 
     private void Start()
@@ -32,7 +38,7 @@ public class Attack : MonoBehaviour
     private void Shoting()
     {
         listEnemy = GameObject.FindGameObjectsWithTag(enemy.tag);
-        if(listEnemy.Length != 0)
+        if(listEnemy.Length != 0 && canAttack)
         {
             minDistance = Vector2.Distance(listEnemy[0].transform.position, transform.position);
             foreach (var enemy in listEnemy)
@@ -46,6 +52,7 @@ public class Attack : MonoBehaviour
             if (minDistance <= visibility)
             {
                 GameObject dartInstance = Instantiate(dart[(int)levelOfDart], transform.position, transform.rotation);
+                source.PlayOneShot(shotAudio);
                 dartInstance.GetComponent<Rigidbody2D>().velocity = (targetPos - transform.position).normalized * force;
             }
         }

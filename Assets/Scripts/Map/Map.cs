@@ -29,10 +29,13 @@ public class Map : MonoBehaviour
     public int maxX, maxY;
     internal HashSet<Vector2> blankPos;
 
+    internal static Map mapInstance;
+
     private void Start()
     {
         blankPos = new HashSet<Vector2>();
         PainMap();
+        mapInstance = this;
     }
 
     private void PaintWall()
@@ -41,17 +44,20 @@ public class Map : MonoBehaviour
         {
             for (int y = -maxY / 2; y < maxY; y++)
             {
-                if((i == -maxX / 2 || i == maxX / 2) && (y > -maxY/2 && y < maxY / 2))
+                if((i == -maxX / 2 || i == maxX / 2) && 
+                    (y > -maxY/2 && y < maxY / 2))
                 {
                     Vector3Int position = new(i, y, 0);
                     firstFloor.SetTile(position, wallY);
                 }
-                else if((y == -maxY/2 || y == maxY/2) && (i < maxX/2  && i > -maxX / 2))
+                else if((y == -maxY/2 || y == maxY/2) && 
+                    (i < maxX/2  && i > -maxX / 2))
                 {
                     Vector3Int position = new(i, y, 0);
                     firstFloor.SetTile(position, wallX);
                 }
-                else if((i == -maxX /2 || i == maxX / 2) && (y == -maxY/2 || y == maxY / 2))
+                else if((i == -maxX /2 || i == maxX / 2) && 
+                    (y == -maxY/2 || y == maxY / 2))
                 {
                     Vector3Int position = new(i, y, 0);
                     secondFloor.SetTile(position, corner);
@@ -73,11 +79,15 @@ public class Map : MonoBehaviour
                     Vector3 position = new(x, y, y);
                     if (treeArray[t].gameObject.CompareTag("Tree"))
                     {
-                        Instantiate(treeArray[t], position + new Vector3(0.5f, 0.5f, 0.2f), transform.rotation);
+                        Instantiate(treeArray[t], position + 
+                            new Vector3(0.5f, 0.5f, 0.2f), 
+                            transform.rotation);
                     }
                     else if(treeArray[t].gameObject.CompareTag("Wood"))
                     {
-                        Instantiate(treeArray[t], position + new Vector3(0.5f, 0.5f, 0.5f), transform.rotation);
+                        Instantiate(treeArray[t], position + 
+                            new Vector3(0.5f, 0.5f, 0.5f), 
+                            transform.rotation);
                     }
                 }
                 else
@@ -109,7 +119,8 @@ public class Map : MonoBehaviour
     {
         DestroyImmediate(GameObject.FindWithTag("Floor"));
         square.transform.localScale = new Vector2(maxX + 5, maxY + 10);
-        Instantiate(square, new Vector3(0, 0, maxY + 10), transform.rotation);
+        Instantiate(square, new Vector3(0, 0, maxY + 10), 
+            transform.rotation);
     }
 
     private void ClearMap()
@@ -118,4 +129,6 @@ public class Map : MonoBehaviour
         firstFloor.ClearAllTiles();
         secondFloor.ClearAllTiles();
     }
+
+    
 }

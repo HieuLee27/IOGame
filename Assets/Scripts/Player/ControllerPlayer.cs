@@ -88,6 +88,12 @@ public class ControllerPlayer : MonoBehaviour
                 sp.flipX = true;
             }
         }
+        if (health < 0.1f)
+        {
+            anim.SetTrigger("Die");
+            rb.velocity = Vector2.zero;
+            gameObject.GetComponent<Attack>().canAttack = false;
+        }
     }
 
     private void Appear()
@@ -115,5 +121,10 @@ public class ControllerPlayer : MonoBehaviour
         {
             level += 1;
         }
+    }
+
+    public void CheckLife()
+    {
+        ManagerGame.instance.result = ManagerGame.Results.Lose;
     }
 }

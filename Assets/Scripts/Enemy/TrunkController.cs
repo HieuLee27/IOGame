@@ -39,7 +39,8 @@ public class TrunkController : EnemyController
         if (Vector2.Distance(transform.position, player.transform.position) <= distanceKeeping)
         {
             float cornerRotate = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
-            Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, cornerRotate));
+            GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, cornerRotate));
+            newBullet.GetComponent<Rigidbody2D>().velocity = CommonMethod.GetDirection(gameObject, player).normalized * newBullet.GetComponent<Bullet>().speed;
         }
     }
 }

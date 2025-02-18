@@ -195,10 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMoving: 0.7
-  timeAttacking: 1
+  timeAttacking: 1.5
   mana: {fileID: 4129319525363264706, guid: 344c90687aa72aa4d94943434f012af3, type: 3}
-  coin: {fileID: 0}
-  health: 60
+  coin: {fileID: 7380860369612922932, guid: f00ecdc66595cdd46b20d88eccc30c4c, type: 3}
+  health: 200
   damage: 20
-  bullet: {fileID: 7380860369612922932, guid: f00ecdc66595cdd46b20d88eccc30c4c, type: 3}
+  bullet: {fileID: 4033048022429568432, guid: 898cadd0c4c8c3f498c37eec47411f13, type: 3}
   distanceKeeping: 3

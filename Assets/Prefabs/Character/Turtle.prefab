@@ -198,5 +198,5 @@ MonoBehaviour:
   timeAttacking: 1
   mana: {fileID: 4129319525363264706, guid: 344c90687aa72aa4d94943434f012af3, type: 3}
   coin: {fileID: 7380860369612922932, guid: f00ecdc66595cdd46b20d88eccc30c4c, type: 3}
-  health: 20
+  health: 75
   damage: 10

@@ -6,33 +6,38 @@ public class Thunder : MonoBehaviour
 {
     [SerializeField] private GameObject thunder;
     private GameObject[] countOfThunder;
-    [SerializeField] private int maxCountOfThunder;
+    public int maxCountOfThunder;
     private float previousTime;
     public float timeToSpawn;
 
     private void Start()
     {
-        previousTime = Time.time;
+        previousTime = Time.timeSinceLevelLoad;
     }
 
     private void Update()
     {
         countOfThunder = GameObject.FindGameObjectsWithTag("Thunder");
+        SpawnThunder();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void SpawnThunder()
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (countOfThunder.Length < maxCountOfThunder)
         {
-            if(countOfThunder != null)
+            GameObject newEnemy = GameObject.FindWithTag("Enemy");
+            if (newEnemy != null)
             {
-                if (Time.time > previousTime + timeToSpawn)
+                if (Vector2.Distance(transform.position, newEnemy.transform.position) < 3.5f)
                 {
-                    Instantiate(thunder, new Vector3(collision.transform.position.x, collision.transform.position.y, 0) + new Vector3(0, 0.5f, 0), Quaternion.identity);
-                    previousTime = Time.time;
+                    if (Time.timeSinceLevelLoad - previousTime > timeToSpawn)
+                    {
+                        Vector3 position = newEnemy.transform.position;
+                        Instantiate(thunder, position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                        previousTime = Time.timeSinceLevelLoad;
+                    }
                 }
             }
         }
     }
-
 }

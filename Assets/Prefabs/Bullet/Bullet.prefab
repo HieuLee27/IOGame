@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 784232255670967717, guid: 4c784a4d1940e4c4a84120fd9cbca1c3, type: 3}
-  speed: 2
-  damage: 50
+  speed: 2.2
+  damage: 30
 --- !u!50 &3179937303820145527
 Rigidbody2D:
   serializedVersion: 4

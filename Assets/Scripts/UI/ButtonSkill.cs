@@ -9,5 +9,6 @@ public class ButtonSkill : MonoBehaviour
     public void TurnOff()
     {
         panelSkills.SetActive(false);
+        ManagerGame.instance.isPaused = false;
     }
 }
