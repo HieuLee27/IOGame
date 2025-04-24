@@ -1,0 +1,5 @@
+*
+!Assets/
+!Assets/_Scripts/
+!Assets/_Scripts/**
+!.gitignore
