@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class ManagerGame : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class ManagerGame : MonoBehaviour
     public AudioClip loseAudio;
     public AudioClip BGM;
 
-    private int nextScene = 1;
+    [SerializeField] private TMP_Text textLevel;
 
     private void Start()
     {
@@ -88,7 +89,6 @@ public class ManagerGame : MonoBehaviour
             {
                 textResult.text = "You Win!";
                 source.PlayOneShot(winAudio);
-                nextScene = 3;
                 
                 result = Results.None;
             }
@@ -96,7 +96,6 @@ public class ManagerGame : MonoBehaviour
             {
                 textResult.text = "You Lose!";
                 source.PlayOneShot(loseAudio);
-                nextScene = 1;
 
                 result = Results.None;
             }
@@ -109,8 +108,25 @@ public class ManagerGame : MonoBehaviour
         isPaused = false;
     }
 
-    public void NextScene()
+    public void NextChapter()
     {
-        SceneManager.LoadSceneAsync(nextScene);
+        string name = SceneManager.GetActiveScene().name;
+        SceneManager.LoadSceneAsync(nameof(name));
+        ResetStatus();
+    }
+
+    private void NextScene()
+    {
+
+    }
+
+    public void ResetStatus()
+    {
+        string path = LevelTrasition.FileName();
+        GameProgress progressI = JsonUtility.FromJson<GameProgress>(File.ReadAllText(path));
+        progressI.coin = "0";
+        progressI.chapter = "1";
+        progressI.mana = 0;
+        File.WriteAllText(path, JsonUtility.ToJson(progressI, true));
     }
 }

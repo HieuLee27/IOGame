@@ -22,10 +22,10 @@ public class EffectedTeleport : MonoBehaviour
             {
                 component.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1); // Reset color to white
             }
-        }
-        if (ManagerGame.instance.result == ManagerGame.Results.None)
-        {
-            btnNextLevel.SetActive(true); // Show the button
+            if (ManagerGame.instance.result == ManagerGame.Results.None)
+            {
+                btnNextLevel.SetActive(true); // Show the button
+            }
         }
     }
 

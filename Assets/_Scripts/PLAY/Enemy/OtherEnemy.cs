@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OtherEnemy : EnemyController
 {    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         base.Update();
         DestroyEnemyAndSpawnMana();

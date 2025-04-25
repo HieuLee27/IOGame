@@ -48,6 +48,7 @@ public class LevelTrasition : MonoBehaviour
 
             NextLevelScene();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameObject.Find("BtnNextLevel").gameObject.SetActive(false);
         }
     }
 
